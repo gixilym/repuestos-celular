@@ -7,4 +7,6 @@ export const useStore = create(set => ({
   setProducts: products => set({ products }),
   multiply: 2.2,
   setMultiply: multiply => set({ multiply }),
+  category: "modules",
+  setCategory: category => set({ category }),
 }));

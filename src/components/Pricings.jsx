@@ -9,13 +9,13 @@ function Pricings({ selectedProduct }) {
     cost = selectedProduct?._1,
     avaible = selectedProduct?._2,
     name = isNull(selectedProduct)
-      ? "Nombre del modulo"
+      ? "nombre del repuesto"
       : productName(selectedProduct);
 
   return (
     <div className="flex flex-col justify-start items-start w-full gap-y-6">
-      <h2 className="text-2xl text-center w-full border-b-2 border-slate-300">
-        {name}
+      <h2 className="text-2xl text-start w-full border-b-2 border-slate-300">
+        ➡️ {name}
       </h2>
       <h3
         className={twMerge(
@@ -34,6 +34,7 @@ function Pricings({ selectedProduct }) {
             <div className="flex items-center justify-center gap-x-2">
               <p className="text-sm uppercase">Coste por</p>
               <select
+                id="product-price"
                 value={multiply}
                 onChange={e => setMultiply(Number(e.target.value))}
                 className="text-xl font-bold border outline-0 border-slate-800 rounded-md p-1 text-slate-800"

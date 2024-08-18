@@ -3,8 +3,7 @@ import * as XLSX from "xlsx";
 import Loading from "./components/Loading";
 import Pricings from "./components/Pricings";
 import ProductsList from "./components/ProductsList";
-import { JM_LIST } from "./utils/consts";
-import { deleteEmptys } from "./utils/helpers";
+import { JM_MODULES_URL } from "./utils/consts";
 import { useStore } from "./utils/store";
 
 function App() {
@@ -12,10 +11,10 @@ function App() {
     [loading, setLoading] = useState(true),
     [selectedProduct, setSelectedProduct] = useState(null);
 
-  useEffect(() => fetchProducts(), []);
+  useEffect(() => loadModules(), []);
 
-  function fetchProducts() {
-    fetch(JM_LIST)
+  function loadModules() {
+    fetch(JM_MODULES_URL)
       .then(res => res.arrayBuffer())
       .then(data => {
         const workbook = XLSX.read(data, { type: "array", sheetStubs: true }),
@@ -25,11 +24,12 @@ function App() {
         setProducts(parsed.filter(p => !deleteEmptys(p)));
       })
       .then(() => setLoading(false))
-      .catch(err => console.error(`Error en 'fetchProducts': ${err.message}`));
+      .catch(err => console.error(`Error en 'loadModules': ${err.message}`));
   }
 
   return (
     <main className="bg-white px-8 py-6 rounded-md border-2 w-full max-w-xl space-y-8 h-full">
+      {/* <Category /> */}
       <Pricings selectedProduct={selectedProduct} />
       {loading ? (
         <Loading />
@@ -44,3 +44,20 @@ function App() {
 }
 
 export default App;
+
+/*
+ function loadBatteries() {
+    //* Solo toma los primeros 100 elementos.
+    fetch(JM_BATTERIES_URL)
+      .then(res => res.arrayBuffer())
+      .then(data => {
+        const workbook = XLSX.read(data, { type: "array", sheetStubs: true }),
+          sheetName = workbook.SheetNames[0],
+          sheet = workbook.Sheets[sheetName],
+          parsed = XLSX.utils.sheet_to_json(sheet, { defval: "", raw: true });
+        console.log("baterías: ", parsed);
+      })
+      .then(() => setLoading(false))
+      .catch(err => console.error(`Error en 'loadBatteries': ${err.message}`));
+  }
+*/

@@ -1,4 +1,4 @@
-import { NAME_COLUMN } from "./consts";
+import { JM_BATTERIES_URL, JM_MODULES_URL, NAME_COLUMN } from "./consts";
 
 const normalizeStr = str =>
   str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -34,4 +34,22 @@ const deleteEmptys = p =>
   p[""] == "TOUCH" ||
   p[""] == "ALCATEL";
 
-export { deleteEmptys, formatPrice, len, plainStr, productName };
+function selectCategory(category) {
+  switch (category) {
+    case "modules":
+      return JM_MODULES_URL;
+    case "batteries":
+      return JM_BATTERIES_URL;
+    default:
+      return JM_MODULES_URL;
+  }
+}
+
+export {
+  deleteEmptys,
+  formatPrice,
+  len,
+  plainStr,
+  productName,
+  selectCategory,
+};

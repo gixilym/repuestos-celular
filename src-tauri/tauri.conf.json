@@ -6,7 +6,7 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "repuestos-celular",
+    "productName": "Repuestos para celular",
     "version": "1.0.0"
   },
   "tauri": {

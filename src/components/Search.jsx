@@ -7,7 +7,7 @@ function Search({ handleChange, searchTerm }) {
       autoFocus
       value={searchTerm}
       onChange={handleChange}
-      className="w-full text-xl border-2 border-slate-200 placeholder:text-slate-500/90 bg-slate-100 px-4 py-3 outline-0 rounded-md"
+      className="w-full text-xl border-2 border-slate-400 placeholder:text-slate-500/90 bg-slate-100 px-4 py-3 outline-0 rounded-md"
     />
   );
 }
