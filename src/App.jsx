@@ -4,6 +4,7 @@ import Loading from "./components/Loading";
 import Pricings from "./components/Pricings";
 import ProductsList from "./components/ProductsList";
 import { JM_MODULES_URL } from "./utils/consts";
+import { deleteEmptys } from "./utils/helpers";
 import { useStore } from "./utils/store";
 
 function App() {
