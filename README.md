@@ -1,1 +1,1 @@
-## Repuestos para celular
+![image](https://github.com/user-attachments/assets/a81cd5cb-689b-4bc9-9a43-50a12c99b182)
